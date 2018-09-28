@@ -1,0 +1,43 @@
+﻿<Window x:Class="TeachingLoad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TeachingLoad"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="800">
+    
+    <Grid x:Name="ContainerGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="ContainerColumn1"  Grid.Row="1" Grid.Column="0" >
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFC6C8D1" Offset="0"></GradientStop>
+                    <GradientStop Color="#FFB2B1C7" Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+
+        <Grid x:Name="ContainerColumn2" Grid.Row="1" Grid.Column="1">
+            <DataGrid x:Name="DataGridView" >
+                
+            </DataGrid>
+        </Grid>
+        
+    </Grid>
+    
+</Window>
