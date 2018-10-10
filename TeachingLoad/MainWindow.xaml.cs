@@ -24,15 +24,5 @@ namespace TeachingLoad
         {
             InitializeComponent();
         }
-
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            /*
-            if (Toggle.IsChecked.HasValue == true)
-                { this.ContainerColumn.Visibility = Visibility.Hidden; }
-            else
-                { this.ContainerColumn.Visibility = Visibility.Visible; }
-            */
-        }
     }
 }

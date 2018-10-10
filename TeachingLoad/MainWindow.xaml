@@ -5,134 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeachingLoad"
         mc:Ignorable="d"
-        Title="Педагогічне навантаження" Height="550" Width="800">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/TeachingLoad;component/css/Styles.xaml">
-                </ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
+        Title="MainWindow" Height="550" Width="800">
+    
     <Grid x:Name="ContainerGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Grid x:Name="ContainerMenu" Grid.Row="0" >
+        <Grid x:Name="ContainerColumn1"  Grid.Row="1" Grid.Column="0" >
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFC6C8D1" Offset="0"></GradientStop>
+                    <GradientStop Color="#FFB2B1C7" Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Grid.Background>
             <Grid.RowDefinitions>
-                <RowDefinition Height="20"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <DockPanel x:Name="DockPanel" Grid.Row="0">
-                <Menu x:Name="Menu" FontSize="14">
-                    <MenuItem Header="Файл">
-                        <MenuItem Header="Створити нову базу..."></MenuItem>
-                        <Separator></Separator>
-                        <MenuItem Header="Зберегти резервну копію..."></MenuItem>
-                        <MenuItem Header="Відновити з резервної копії..."></MenuItem>
-                        <Separator></Separator>
-                        <MenuItem Header="Вихід" ></MenuItem>
-                    </MenuItem>
-                    <MenuItem Header="Налаштування">
-                        <MenuItem Header="Розгортати вікно при запуску"></MenuItem>
-                        <MenuItem Header="Приховувати панель навігації"></MenuItem>
-                    </MenuItem>
-                    <MenuItem Header="База">
-                        <MenuItem Header="Факультет..."></MenuItem>
-                        <Separator></Separator>
-                        <MenuItem Header="Види робіт..."></MenuItem>
-                        <MenuItem Header="Види навчання..."></MenuItem>
-                        <MenuItem Header="Форми навчання..."></MenuItem>
-                        <Separator></Separator>
-                        <MenuItem Header="Очистити..."></MenuItem>
-                    </MenuItem>
-                    <MenuItem Header="Вікна">
-                        <MenuItem Header="Каскадом"></MenuItem>
-                        <MenuItem Header="Черепицею"></MenuItem>
-                        <MenuItem Header="Упорядкувати значки"></MenuItem>
-                        <Separator></Separator>
-                        <MenuItem Header="Закрити всі, окрім поточного"></MenuItem>
-                        <MenuItem Header="Закрити всі"></MenuItem>
-                    </MenuItem>
-                    <MenuItem Header="Допомога">
-                        <MenuItem Header="Допомога"></MenuItem>
-                        <MenuItem Header="Про програму..."></MenuItem>
-                    </MenuItem>
-                </Menu>
-            </DockPanel>
-            <StackPanel x:Name="Stack" Grid.Row="1" Orientation="Horizontal" Background="#FFF0F0F0">
-                <ToggleButton x:Name="Toggle" Click="ToggleButton_Click" Margin="5,0,0,0" Height="30" Width="30" ToolTip="Автоматично приховувати панель навігації" Background="#FFF0F0F0" BorderBrush="LightGray">HIDE</ToggleButton>
-            </StackPanel>
         </Grid>
 
-        <Grid x:Name="ContainerColumn" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid x:Name="ContainerColumn1" Grid.Column="0" >
-                <Grid.Background>
-                    <LinearGradientBrush>
-                        <GradientStop Color="LightGray" Offset="1"></GradientStop>
-                        <GradientStop Color="#FFC8C8D8" Offset="0"></GradientStop>
-                    </LinearGradientBrush>
-                </Grid.Background>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-
-                <Grid x:Name="ContainerTables" Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Name="TextTables" Grid.Row="0" Style="{StaticResource Headers}">Таблиці</TextBlock>
-
-                </Grid>
-
-                <Grid x:Name="ContainerDisciplines" Grid.Row="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <StackPanel Orientation="Horizontal">
-
-                        <TextBlock x:Name="TextPlacement" Style="{StaticResource Headers}">Розподіл</TextBlock>
-                    </StackPanel>
-
-                </Grid>
-
-                <Grid x:Name="ContainerReports" Grid.Row="2">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-
-                    <TextBlock x:Name="TextReports" Grid.Row="0" Style="{StaticResource Headers}">Звіти</TextBlock>
-
-                </Grid>
-
-            </Grid>
-
-            <Grid x:Name="ContainerColumn2" Grid.Column="1">
-                <DataGrid x:Name="DataGridView" AutoGenerateColumns="True" >
-
-                </DataGrid>
-            </Grid>
+        <Grid x:Name="ContainerColumn2" Grid.Row="1" Grid.Column="1">
+            <DataGrid x:Name="DataGridView" >
+                
+            </DataGrid>
         </Grid>
-
-
-        <Grid x:Name="ContainerFooter" Grid.Row="2" >
-
-        </Grid>
-
+        
     </Grid>
-
+    
 </Window>
