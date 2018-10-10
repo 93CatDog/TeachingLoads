@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TeachingLoad.Models;
+using TeachingLoadLib.Entities;
 
 namespace TeachingLoad
 {
@@ -25,6 +27,36 @@ namespace TeachingLoad
             InitializeComponent();
 
             this.Expander.Expanded += Expander_Expanded;
+
+            using (var context = new TeachingLoadContext())
+            {
+                //List<Teacher> teachers = new List<Teacher>
+                //{
+                ////new Teacher(1,"Олександр", "Степанець", "Васильович"),
+                //new Teacher(2,"Валерій", "Бунь", "Павлович"),
+                //new Teacher(3,"Ігор", "Поліщук", "Анатолійович"),
+                //new Teacher(4,"Тарас", "Баган", "Григорович")
+                //};
+
+                //context.Teachers.UpdateRange(teachers);
+
+                //Teacher t = new Teacher(4, "Тарас", "Баган", "Григорович");
+                //context.Teachers.Add(t);
+
+                //context.SaveChanges();
+
+
+                List<Teacher> teachers = context.Teachers.ToList();
+
+                //foreach(var teacher in teachers)
+                //{
+
+                //}
+
+            }
+
+            
+
         }
 
         private void Expander_Expanded(object sender, RoutedEventArgs e)
