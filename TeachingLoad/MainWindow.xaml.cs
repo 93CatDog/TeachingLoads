@@ -23,6 +23,29 @@ namespace TeachingLoad
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Expander.Expanded += Expander_Expanded;
+        }
+
+        private void Expander_Expanded(object sender, RoutedEventArgs e)
+        {
+            if (this.Expander.IsExpanded)
+            {
+                this.ContainerColumn2.Margin = new Thickness(0);
+            }
+            else
+            {
+                this.ContainerColumn2.Margin = new Thickness(-150, 0, 0, 0);
+
+            }
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+                this.Expander.Margin = new Thickness(5, -347, 0, 0);
+            else
+                this.Expander.Margin = new Thickness(5, -27, 0, 0);
         }
     }
 }

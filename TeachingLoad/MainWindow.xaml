@@ -5,39 +5,191 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeachingLoad"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="800">
-    
+        Title="Педагогічне навантаження" StateChanged="Window_StateChanged" MinHeight="550" MinWidth="800" Height="550" Width="800">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="./css/Styles.xaml">
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid x:Name="ContainerGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
 
-        <Grid x:Name="ContainerColumn1"  Grid.Row="1" Grid.Column="0" >
-            <Grid.Background>
-                <LinearGradientBrush>
-                    <GradientStop Color="#FFC6C8D1" Offset="0"></GradientStop>
-                    <GradientStop Color="#FFB2B1C7" Offset="1"></GradientStop>
-                </LinearGradientBrush>
-            </Grid.Background>
+        <Grid x:Name="ContainerMenu" Grid.Row="0" >
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="20"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
+            <DockPanel x:Name="DockPanel" Grid.Row="0">
+                <Menu x:Name="Menu" FontSize="14">
+                    <MenuItem Header="Файл">
+                        <MenuItem Header="Створити нову базу..."></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Зберегти резервну копію..."></MenuItem>
+                        <MenuItem Header="Відновити з резервної копії..."></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Вихід" ></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Налаштування">
+                        <MenuItem Header="Розгортати вікно при запуску"></MenuItem>
+                        <MenuItem Header="Приховувати панель навігації"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="База">
+                        <MenuItem Header="Факультет..."></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Види робіт..."></MenuItem>
+                        <MenuItem Header="Види навчання..."></MenuItem>
+                        <MenuItem Header="Форми навчання..."></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Очистити..."></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Вікна">
+                        <MenuItem Header="Каскадом"></MenuItem>
+                        <MenuItem Header="Черепицею"></MenuItem>
+                        <MenuItem Header="Упорядкувати значки"></MenuItem>
+                        <Separator></Separator>
+                        <MenuItem Header="Закрити всі, окрім поточного"></MenuItem>
+                        <MenuItem Header="Закрити всі"></MenuItem>
+                    </MenuItem>
+                    <MenuItem Header="Допомога">
+                        <MenuItem Header="Допомога"></MenuItem>
+                        <MenuItem Header="Про програму..."></MenuItem>
+                    </MenuItem>
+                </Menu>
+            </DockPanel>
+            <StackPanel x:Name="Stack" Grid.Row="1" Orientation="Horizontal" Background="#FFF0F0F0"/>
         </Grid>
 
-        <Grid x:Name="ContainerColumn2" Grid.Row="1" Grid.Column="1">
-            <DataGrid x:Name="DataGridView" >
-                
-            </DataGrid>
+        <Grid x:Name="ContainerColumn" Background="#FFF0F0F0" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Expander x:Name="Expander" Height="444" Width="145"  Collapsed="Expander_Expanded" IsExpanded="True" Margin="5,-27,0,0" BorderThickness="0" ToolTip="Автоматично приховувати панель навігації" Background="#FFF0F0F0" BorderBrush="LightGray" >
+                <Grid x:Name="ContainerColumn1" Margin="0,6,0,0" Height="419" Width="145" >
+                    <Grid.Background>
+                        #FFF0F0F0
+                    </Grid.Background>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="3*"/>
+                        <RowDefinition Height="4*"/>
+                        <RowDefinition Height="4*"/>
+                    </Grid.RowDefinitions>
+                    <Grid x:Name="ContainerTables" Grid.Row="0" Grid.RowSpan="2" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock x:Name="TextTables" Grid.Row="0" Style="{StaticResource Headers}" Grid.ColumnSpan="2" Margin="5,0"><Run Text="Таблиці"/></TextBlock>
+                        <TextBlock Name="TextBlockWithHyperlink" Grid.Row="2" Grid.Column="1">
+    <Hyperlink 
+        NavigateUri="http://somesite.com">
+        Групи
+    </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock Name="LinkTeachers" Grid.Row="3" Grid.Column="1">
+    <Hyperlink 
+        NavigateUri="http://somesite.com">
+        Викладачі
+    </Hyperlink>
+                        </TextBlock>
+
+                        <TextBlock Name="dsf" Grid.Row="1" Grid.Column="1">
+    <Hyperlink 
+        NavigateUri="http://somesite.com">
+        Дисципліни
+    </Hyperlink>
+                        </TextBlock>
+
+
+
+                    </Grid>
+
+                    <Grid x:Name="ContainerDistributing" Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+
+                        <Grid x:Name="ContainerPlacement" Grid.Row="0" Grid.RowSpan="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock x:Name="TextPlacement" Grid.ColumnSpan="2" Style="{StaticResource Headers}"><Run Text="Розподіл"/></TextBlock>
+
+                            <TextBlock Name="TextBlockWithHyperl" Grid.Row="2" Grid.Column="1">
+    <Hyperlink 
+        NavigateUri="http://somesite.com">
+        Навантаження
+    </Hyperlink>
+                            </TextBlock>
+
+                            <TextBlock Name="ddd" Grid.Row="1" Grid.Column="1">
+    <Hyperlink 
+        NavigateUri="http://somesite.com">
+        Навчальний план
+    </Hyperlink>
+                            </TextBlock>
+
+
+
+
+                        </Grid>
+
+                    </Grid>
+
+                    <Grid x:Name="ContainerReports" Grid.Row="3" Margin="0,-0.001,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="TextReports" Grid.Row="0" Style="{StaticResource Headers}"><Run Text="Звіти"/></TextBlock>
+
+                    </Grid>
+
+                </Grid>
+            </Expander>
+
+            <Grid x:Name="ContainerColumn2" Grid.Column="1">
+                <DataGrid x:Name="DataGridView" AutoGenerateColumns="True" CanUserAddRows="False" CanUserDeleteRows="True" CanUserSortColumns="True"  >
+                    <!--<DataGrid.Columns>
+                        <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" />
+                        <DataGridHyperlinkColumn Header="Id" Binding="{Binding Path=Id}" />
+                    </DataGrid.Columns>-->
+                </DataGrid>
+            </Grid>
         </Grid>
-        
+
+
+        <Grid x:Name="ContainerFooter" Grid.Row="2" >
+
+        </Grid>
+
     </Grid>
-    
+
 </Window>
