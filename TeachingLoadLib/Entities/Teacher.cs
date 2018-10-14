@@ -39,5 +39,10 @@ namespace TeachingLoadLib.Entities
         {
 
         }
+
+        public override string ToString()
+        {
+            return this.LastName;
+        }
     }
 }

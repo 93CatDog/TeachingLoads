@@ -22,40 +22,43 @@ namespace TeachingLoad
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<Teacher> teachers { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
 
             this.Expander.Expanded += Expander_Expanded;
 
-            using (var context = new TeachingLoadContext())
-            {
-                //List<Teacher> teachers = new List<Teacher>
-                //{
-                ////new Teacher(1,"Олександр", "Степанець", "Васильович"),
-                //new Teacher(2,"Валерій", "Бунь", "Павлович"),
-                //new Teacher(3,"Ігор", "Поліщук", "Анатолійович"),
-                //new Teacher(4,"Тарас", "Баган", "Григорович")
-                //};
+            //using (var context = new TeachingLoadContext())
+            //{
 
-                //context.Teachers.UpdateRange(teachers);
+            //    List<Teacher> teachers = new List<Teacher>
+            //    {
+            //    new Teacher(5,"Олександр", "Степанець", "Васильович"),
+            //    new Teacher(6,"Валерій", "Бунь", "Павлович"),
+            //    new Teacher(7,"Ігор", "Поліщук", "Анатолійович"),
+            //    new Teacher(8,"Тарас", "Баган", "Григорович")
+            //    };
 
-                //Teacher t = new Teacher(4, "Тарас", "Баган", "Григорович");
-                //context.Teachers.Add(t);
+            //    context.Teachers.UpdateRange(teachers);
 
-                //context.SaveChanges();
+            //Teacher t = new Teacher(4, "Тарас", "Баган", "Григорович");
+            //context.Teachers.Add(t);
+
+            //context.SaveChanges();
 
 
-                List<Teacher> teachers = context.Teachers.ToList();
+            //List<Teacher> teachers = context.Teachers.ToList();
 
-                //foreach(var teacher in teachers)
-                //{
+            //foreach(var teacher in teachers)
+            //{
 
-                //}
+            //}
 
-            }
+            //}
 
-            
+
 
         }
 
@@ -78,6 +81,30 @@ namespace TeachingLoad
                 this.Expander.Margin = new Thickness(5, -347, 0, 0);
             else
                 this.Expander.Margin = new Thickness(5, -27, 0, 0);
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            using(var context = new TeachingLoadContext())
+            {
+                teachers = context.Teachers.ToList();
+                this.DataGridView.ItemsSource = teachers;
+            }
+
+        }
+
+        private void DataGridView_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        {
+            if (e.EditAction != DataGridEditAction.Cancel)
+            {
+                MessageBox.Show("MUST COMMIT");
+            }
+            //Teacher t = (Teacher)e.Row.DataContext;
+            //using (var context = new TeachingLoadContext())
+            //{
+            //    //teachers = context.Teachers.ToList().Re
+            //    this.DataGridView.ItemsSource = teachers;
+            //}
         }
     }
 }
