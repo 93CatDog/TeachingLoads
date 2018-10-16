@@ -27,9 +27,15 @@ namespace TeachingLoadLib.Entities
         [Column("Patronymic")]
         public string Patronymic { get; set; }
 
-        public Teacher(int id, String firstName, String lastName, String patronymic)
+        //[Column("Annotation")]
+        //public string Annotation { get; set; }
+
+        public static int Count { get; set; }
+
+        public Teacher(String firstName, String lastName, String patronymic)
         {
-            this.Id = id;
+            Count++;
+            this.Id = Count;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Patronymic = patronymic;

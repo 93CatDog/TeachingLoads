@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TeachingLoad"
         mc:Ignorable="d"
-        Title="Педагогічне навантаження" StateChanged="Window_StateChanged" MinHeight="550" MinWidth="800" Height="550" Width="800" >
+        Title="Педагогічне навантаження" MinHeight="550" MinWidth="800" Height="550" Width="800" Closing="Window_Closing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -67,122 +67,48 @@
         </Grid>
 
         <Grid x:Name="ContainerColumn" Background="#FFF0F0F0" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Expander x:Name="Expander" Height="444" Width="145"  Collapsed="Expander_Expanded" IsExpanded="True" Margin="5,-27,0,0" BorderThickness="0" ToolTip="Автоматично приховувати панель навігації" Background="#FFF0F0F0" BorderBrush="LightGray" >
-                <Grid x:Name="ContainerColumn1" Margin="0,6,0,0" Height="419" Width="145" >
-                    <Grid.Background>
-                        #FFF0F0F0
-                    </Grid.Background>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="3*"/>
-                        <RowDefinition Height="4*"/>
-                        <RowDefinition Height="4*"/>
-                    </Grid.RowDefinitions>
-                    <Grid x:Name="ContainerTables" Grid.Row="0" Grid.RowSpan="2" >
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="20"></ColumnDefinition>
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
 
-                        <TextBlock x:Name="LabelTables" Grid.Row="0" Style="{StaticResource Headers}" Grid.ColumnSpan="2" Margin="5,0"><Run Text="Таблиці"/></TextBlock>
-                        <TextBlock Name="LabelDisciplines" Grid.Row="1" Grid.Column="1">
-    <Hyperlink 
-        NavigateUri=".">
-        Дисципліни
-    </Hyperlink>
-                        </TextBlock>
+            <TabControl TabStripPlacement="Left" x:Name="Tab" >
+                <TabItem x:Name="Tab_Disciplines" Style="{StaticResource ResourceKey=Tabs}">
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            
+                            <TextBlock Text="Дисципліни" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <DataGrid x:Name="DataGridDisciplines" AutoGenerateColumns="True" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="DataGrid_CellEditEnding">
+                    </DataGrid>
+                </TabItem>
+                <TabItem x:Name="TabGroups" Style="{StaticResource ResourceKey=Tabs}">
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Horizontal">
 
-                        <TextBlock Name="LinkTeachers" Grid.Row="2" Grid.Column="1" >
-    <Hyperlink Click="Hyperlink_Click"
-        NavigateUri=".">
-        Групи
-    </Hyperlink>
-                        </TextBlock>
+                            <TextBlock Text="Групи" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <DataGrid x:Name="DataGridGroups" AutoGenerateColumns="True" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="DataGrid_CellEditEnding">
+                    </DataGrid>
+                </TabItem>
+                <TabItem x:Name="TabTeachers" Style="{StaticResource ResourceKey=Tabs}">
+                    <TabItem.Header>
+                        <StackPanel  Orientation="Horizontal">
 
-                        <TextBlock Name="LabelTeachers" Grid.Row="3" Grid.Column="1">
-    <Hyperlink 
-        NavigateUri=".">
-        Викладачі
-    </Hyperlink>
-                        </TextBlock>
+                            <TextBlock Text="Викладачи" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <DataGrid x:Name="DataGridTeachers" AutoGenerateColumns="True" CanUserAddRows="True" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="DataGrid_CellEditEnding">
+                    </DataGrid>
+                </TabItem>
 
 
+            </TabControl>
 
-                    </Grid>
-
-                    <Grid x:Name="ContainerDistributing" Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-
-
-                        <Grid x:Name="ContainerPlacement" Grid.Row="0" Grid.RowSpan="2" >
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="20"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <TextBlock x:Name="TextPlacement" Grid.ColumnSpan="2" Style="{StaticResource Headers}"><Run Text="Розподіл"/></TextBlock>
-
-                            <TextBlock Name="TextBlockWithHyperl" Grid.Row="2" Grid.Column="1">
-    <Hyperlink 
-        NavigateUri="http://somesite.com">
-        Навантаження
-    </Hyperlink>
-                            </TextBlock>
-
-                            <TextBlock Name="ddd" Grid.Row="1" Grid.Column="1">
-    <Hyperlink 
-        NavigateUri="http://somesite.com">
-        Навчальний план
-    </Hyperlink>
-                            </TextBlock>
-
-
-
-
-                        </Grid>
-
-                    </Grid>
-
-                    <Grid x:Name="ContainerReports" Grid.Row="3" Margin="0,-0.001,0,0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock x:Name="TextReports" Grid.Row="0" Style="{StaticResource Headers}"><Run Text="Звіти"/></TextBlock>
-
-                    </Grid>
-
-                </Grid>
-            </Expander>
-
-            <Grid x:Name="ContainerColumn2" Grid.Column="1">
-                <DataGrid x:Name="DataGridView" AutoGenerateColumns="True" CanUserAddRows="False" CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="DataGridView_CellEditEnding" >
+               
                     <!--<DataGrid.Columns>
                         <DataGridTextColumn Header="Прізвище" Binding="{Binding Path=LastName}" />
                         <DataGridHyperlinkColumn Header="Id" Binding="{Binding Path=Id}" />
                     </DataGrid.Columns>-->
-                </DataGrid>
-            </Grid>
+
         </Grid>
 
 

@@ -22,13 +22,32 @@ namespace TeachingLoad
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool IsChanged { get; set; }
+
+        public List<Discipline> disciplines { get; set; }
         public List<Teacher> teachers { get; set; }
+        public List<Group> groups { get; set; }
+
 
         public MainWindow()
         {
             InitializeComponent();
 
-            this.Expander.Expanded += Expander_Expanded;
+            using (var context = new TeachingLoadContext())
+            {
+                disciplines = context.Disciplines.ToList();
+                this.DataGridDisciplines.ItemsSource = disciplines;
+                groups = context.Groups.ToList();
+                this.DataGridGroups.ItemsSource = groups;
+                teachers = context.Teachers.ToList();
+                this.DataGridTeachers.ItemsSource = teachers;
+
+                
+            }
+
+            MessageBox.Show(Discipline.Count + " " + Group.Count + " " + Teacher.Count);
+
+            //this.Expander.Expanded += Expander_Expanded;
 
             //using (var context = new TeachingLoadContext())
             //{
@@ -43,67 +62,55 @@ namespace TeachingLoad
 
             //    context.Teachers.UpdateRange(teachers);
 
-            //Teacher t = new Teacher(4, "Тарас", "Баган", "Григорович");
-            //context.Teachers.Add(t);
+            //context.SaveChanges();
+
+
+
+            //second stage
+
+
+
+            //Group t = new Group("ТА-81");
+
+            //Discipline d = new Discipline("Контролери");
+
+            //context.Groups.Add(t);
+            //context.Disciplines.Add(d);
 
             //context.SaveChanges();
 
 
-            //List<Teacher> teachers = context.Teachers.ToList();
-
-            //foreach(var teacher in teachers)
-            //{
-
-            //}
-
-            //}
-
 
 
         }
 
-        private void Expander_Expanded(object sender, RoutedEventArgs e)
-        {
-            if (this.Expander.IsExpanded)
-            {
-                this.ContainerColumn2.Margin = new Thickness(0);
-            }
-            else
-            {
-                this.ContainerColumn2.Margin = new Thickness(-150, 0, 0, 0);
-
-            }
-        }
-
-        private void Window_StateChanged(object sender, EventArgs e)
-        {
-            if (this.WindowState == WindowState.Maximized)
-                this.Expander.Margin = new Thickness(5, -347, 0, 0);
-            else
-                this.Expander.Margin = new Thickness(5, -27, 0, 0);
-        }
-
-        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        /*private void TabTeachers_Click(object sender, RoutedEventArgs e)
         {
             using(var context = new TeachingLoadContext())
             {
                 teachers = context.Teachers.ToList();
-                this.DataGridView.ItemsSource = teachers;
+                this.DataGridTeachers.ItemsSource = teachers;
             }
 
-        }
+        }*/
 
-        private void DataGridView_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
+        private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             if (e.EditAction != DataGridEditAction.Cancel)
             {
-                MessageBox.Show("MUST COMMIT");
+                this.IsChanged = true;
             }
+            
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
             //Teacher t = (Teacher)e.Row.DataContext;
             //using (var context = new TeachingLoadContext())
             //{
             //    //teachers = context.Teachers.ToList().Re
-            //    this.DataGridView.ItemsSource = teachers;
+            //    //this.DataGridView.ItemsSource = teachers;
+                
             //}
         }
     }
