@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TeachingLoad.Models;
 using TeachingLoadLib.Entities;
+using TeachingLoadLib.Helpers;
 
 namespace TeachingLoad
 {
@@ -37,50 +38,28 @@ namespace TeachingLoad
             {
                 disciplines = context.Disciplines.ToList();
                 this.DataGridDisciplines.ItemsSource = disciplines;
-                groups = context.Groups.ToList();
-                this.DataGridGroups.ItemsSource = groups;
-                teachers = context.Teachers.ToList();
-                this.DataGridTeachers.ItemsSource = teachers;
+                //groups = context.Groups.ToList();
+                //this.DataGridGroups.ItemsSource = groups;
+                //teachers = context.Teachers.ToList();
+                //this.DataGridTeachers.ItemsSource = teachers;
 
-                
+
+                //this.DataGridDisciplines.Columns.RemoveAt(0);
+                //for (int i = 0; i < DataGridHeaders.DisciplinesHeaders.Count; i++)
+                //{
+                //    this.DataGridDisciplines.Columns[i].Header = DataGridHeaders.DisciplinesHeaders[i];
+                //}
+                //this.DataGridGroups.Columns.RemoveAt(0);
+                //for (int i = 0; i < DataGridHeaders.GroupsHeaders.Count; i++)
+                //{
+                //    this.DataGridGroups.Columns[i].Header = DataGridHeaders.GroupsHeaders[i];
+                //}
+                //this.DataGridTeachers.Columns.RemoveAt(0);
+                //for (int i = 0; i < DataGridHeaders.TeachersHeaders.Count; i++)
+                //{
+                //    this.DataGridTeachers.Columns[i].Header = DataGridHeaders.TeachersHeaders[i];
+                //}
             }
-
-            MessageBox.Show(Discipline.Count + " " + Group.Count + " " + Teacher.Count);
-
-            //this.Expander.Expanded += Expander_Expanded;
-
-            //using (var context = new TeachingLoadContext())
-            //{
-
-            //    List<Teacher> teachers = new List<Teacher>
-            //    {
-            //    new Teacher(5,"Олександр", "Степанець", "Васильович"),
-            //    new Teacher(6,"Валерій", "Бунь", "Павлович"),
-            //    new Teacher(7,"Ігор", "Поліщук", "Анатолійович"),
-            //    new Teacher(8,"Тарас", "Баган", "Григорович")
-            //    };
-
-            //    context.Teachers.UpdateRange(teachers);
-
-            //context.SaveChanges();
-
-
-
-            //second stage
-
-
-
-            //Group t = new Group("ТА-81");
-
-            //Discipline d = new Discipline("Контролери");
-
-            //context.Groups.Add(t);
-            //context.Disciplines.Add(d);
-
-            //context.SaveChanges();
-
-
-
 
         }
 
@@ -113,5 +92,13 @@ namespace TeachingLoad
                 
             //}
         }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(this.DataGridDisciplines.Columns.Count.ToString());
+        }
+
+       
+        
     }
 }

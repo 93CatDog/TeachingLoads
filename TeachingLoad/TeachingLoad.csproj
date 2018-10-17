@@ -255,7 +255,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\TeachingLoadContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -283,9 +282,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TeachingLoadLib\TeachingLoadLib.csproj">
+    <ProjectReference Include="..\TeachingLoadLib\TeachingLoadCore.csproj">
       <Project>{8b46bbfb-8452-4c20-b799-04ef4993125e}</Project>
-      <Name>TeachingLoadLib</Name>
+      <Name>TeachingLoadCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
