@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace TeachingLoadLib.Helpers
+namespace TeachingLoadCore.Helpers
 {
     public static class DataGridHeaders
     {

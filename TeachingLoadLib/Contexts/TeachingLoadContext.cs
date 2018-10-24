@@ -2,15 +2,18 @@
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using TeachingLoadLib.Entities;
+using TeachingLoadCore.Entities;
 
-namespace TeachingLoad.Models
+namespace TeachingLoadCore.Contexts
 {
     public partial class TeachingLoadContext : DbContext
     {
         public DbSet<Discipline> Disciplines { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<ClassType> ClassTypes { get; set; }
+        public DbSet<DisciplineTeacher> DisciplinesTeachers { get; set; }
+        public DbSet<DisciplineGroup> DisciplinesGroups { get; set; }
 
         public TeachingLoadContext()
         {
@@ -20,11 +23,18 @@ namespace TeachingLoad.Models
             
             Task<int> groupsTask = Groups.CountAsync();
 
+            Task<int> disciplinesTeachersTask = DisciplinesTeachers.CountAsync();
+
+            Task<int> disciplinesGroupsTask = DisciplinesGroups.CountAsync();
+
+            Task<int> classTypesTask = ClassTypes.CountAsync();
+
             Discipline.Count = disciplinesTask.Result;
             Teacher.Count = teachersTask.Result;
             Group.Count = groupsTask.Result;
-
-
+            ClassType.Count = classTypesTask.Result;
+            DisciplineTeacher.Count = disciplinesTeachersTask.Result;
+            DisciplineGroup.Count = disciplinesGroupsTask.Result;
         }
 
         //public TeachingLoadContext(DbContextOptions<TeachingLoadContext> options)

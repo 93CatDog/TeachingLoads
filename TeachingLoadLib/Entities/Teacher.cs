@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TeachingLoadLib.Entities
+namespace TeachingLoadCore.Entities
 {
     //public int Id { get; set; }
     //public String FirstName { get; set; }
@@ -27,18 +27,31 @@ namespace TeachingLoadLib.Entities
         [Column("Patronymic")]
         public string Patronymic { get; set; }
 
-        //[Column("Annotation")]
-        //public string Annotation { get; set; }
+        [Column("Post")]
+        public String Post { get; set; }
+
+        [Column("Rank")]
+        public String Rank { get; set; }
+
+        [Column("Degree")]
+        public String Degree { get; set; }
+
+        [Column("Annotation")]
+        public string Annotation { get; set; }
 
         public static int Count { get; set; }
 
-        public Teacher(String firstName, String lastName, String patronymic)
+        public Teacher(String firstName, String lastName, String patronymic, String post, String rank, String degree, String annotation)
         {
             Count++;
             this.Id = Count;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Patronymic = patronymic;
+            this.Post = post;
+            this.Rank = rank;
+            this.Degree = degree;
+            this.Annotation = annotation;
         }
 
         public Teacher()

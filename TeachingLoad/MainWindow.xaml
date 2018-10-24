@@ -83,7 +83,7 @@
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
-                <!--<TabItem x:Name="TabGroups" Style="{StaticResource ResourceKey=Tabs}">
+                <TabItem x:Name="TabGroups" Style="{StaticResource ResourceKey=Tabs}">
                     <TabItem.Header>
                         <StackPanel  Orientation="Horizontal">
 
@@ -93,11 +93,11 @@
                     <DataGrid x:Name="DataGridGroups" AutoGenerateColumns="False" CanUserAddRows="True" CanUserResizeRows="False" CanUserResizeColumns="False"  CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="DataGrid_CellEditEnding">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Курс" Binding="{Binding Course}" />
-                            <DataGridTextColumn Header="Назва" Binding="{Binding Name}" Width="*"/>
-                            <DataGridTextColumn Header="Форма навчання" Binding="{Binding EducationForm}"/>
-                            <DataGridTextColumn Header="Бюджетників" Binding="{Binding TuitionFreeStudents}"/>
+                            <DataGridTextColumn Header="Назва" Binding="{Binding Name}" Width="*" />
+                            <DataGridTextColumn Header="Форма навчання" Binding="{Binding EducationForm}" Width="*" />
+                            <DataGridTextColumn Header="Бюджетників" Binding="{Binding TuitionFreeStudents}" Width="*" />
                             <DataGridTextColumn Header="Контрактників" Binding="{Binding ContractedStudents}"/>
-                            <DataGridTextColumn Header="Примітки" Binding="{Binding Annotation}" Width="*"/>
+                            <DataGridTextColumn Header="Примітки" Binding="{Binding Annotation}" Width="100" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
@@ -110,17 +110,17 @@
                     </TabItem.Header>
                 <DataGrid x:Name="DataGridTeachers" AutoGenerateColumns="False" CanUserAddRows="True" CanUserResizeRows="False" CanUserResizeColumns="False"  CanUserDeleteRows="True" CanUserSortColumns="True" CellEditEnding="DataGrid_CellEditEnding">
                     <DataGrid.Columns>
-                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Surname}" />
-                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Прізвище" Binding="{Binding Surname}" Width="*"/>
+                            <DataGridTextColumn Header="Ім'я" Binding="{Binding Name}" Width="*" />
                             <DataGridTextColumn Header="По-батькові" Binding="{Binding Patronymic}"/>
                             <DataGridTextColumn Header="Ставка" Binding="{Binding Rate}"/>
                             <DataGridTextColumn Header="Посада" Binding="{Binding ContractedStudents}"/>
                             <DataGridTextColumn Header="Звання" Binding="{Binding Annotation}" Width="*"/>
-                <DataGridTextColumn Header="Ступінь" Binding="{Binding Annotation}" Width="*"/>        
-                <DataGridTextColumn Header="Примітки" Binding="{Binding Annotation}" Width="*"/>
-                </DataGrid.Columns>
+                            <DataGridTextColumn Header="Ступінь" Binding="{Binding Annotation}" />        
+                            <DataGridTextColumn Header="Примітки" Binding="{Binding Annotation}" Width="*"/>
+                    </DataGrid.Columns>
                 </DataGrid>
-                </TabItem>-->
+                </TabItem>
 
 
             </TabControl>
