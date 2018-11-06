@@ -44,51 +44,70 @@ namespace TeachingLoad
                 teachers = context.Teachers.ToList();
                 this.DataGridTeachers.ItemsSource = teachers;
             }
+
+
         }
 
 
 
         private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            //if (e.EditAction != DataGridEditAction.Cancel)
-            //{
-            //    this.IsChanged = true;
-            //}
-            
+            if (e.EditAction != DataGridEditAction.Cancel)
+            {
+                this.IsChanged = true;
+                this.DataGridDisciplines.CellEditEnding -= DataGrid_CellEditEnding;
+                this.DataGridGroups.CellEditEnding -= DataGrid_CellEditEnding;
+                this.DataGridTeachers.CellEditEnding -= DataGrid_CellEditEnding;
+            }
+
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            //Teacher t = (Teacher)e.Row.DataContext;
-            //using (var context = new TeachingLoadContext())
-            //{
-            //    //teachers = context.Teachers.ToList().Re
-            //    //this.DataGridView.ItemsSource = teachers;
-                
-            //}
+
+            //Saving changes to DB
+            if (this.IsChanged)
+            {
+                using (TeachingLoadContext context = new TeachingLoadContext())
+                {
+                    List<Disciplines> disciplines = (List<Disciplines>)this.DataGridDisciplines.ItemsSource;
+                    context.Disciplines.UpdateRange(disciplines);
+
+                    //List<Groups> groups = (List<Groups>)this.DataGridGroups.ItemsSource;
+                    //context.Groups.UpdateRange(groups);
+
+                    List<Teachers> teachers = (List<Teachers>)this.DataGridTeachers.ItemsSource;
+                    context.Teachers.UpdateRange(teachers);
+
+                    context.SaveChangesAsync();
+                }
+                this.IsChanged = false;
+            }
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(this.DataGridDisciplines.Columns.Count.ToString());
+            this.Window_Closing(this, new System.ComponentModel.CancelEventArgs());
+
+            
         }
 
-       //public void Test()
-       // {
-            //ExcelReader er = new ExcelReader(ExcelPaths.DisciplinesPath);
-            //this.disciplines = er.ReadSheet();
+        //public void Test()
+        // {
+        //ExcelReader er = new ExcelReader(ExcelPaths.DisciplinesPath);
+        //this.disciplines = er.ReadSheet();
 
-            //using (var context = new TeachingLoadContext())
-            //{
-            //    //context.Disciplines.UpdateRange(disciplines);
+        //using (var context = new TeachingLoadContext())
+        //{
+        //    //context.Disciplines.UpdateRange(disciplines);
 
-            //    context.Disciplines.UpdateRange(disciplines);
+        //    context.Disciplines.UpdateRange(disciplines);
 
-            //    context.SaveChangesAsync();
+        //    context.SaveChangesAsync();
 
-            //    //disciplines = context.Disciplines.ToList();
-            //    //this.DataGridDisciplines.ItemsSource = disciplines;
-            //}
+        //    //disciplines = context.Disciplines.ToList();
+        //    //this.DataGridDisciplines.ItemsSource = disciplines;
+        //}
         //}
 
     }

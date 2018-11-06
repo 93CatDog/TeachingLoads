@@ -31,14 +31,14 @@
                     <MenuItem Header="Файл">
                         <MenuItem Header="Створити нову базу..."></MenuItem>
                         <Separator></Separator>
-                        <MenuItem Header="Зберегти резервну копію..."></MenuItem>
-                        <MenuItem Header="Відновити з резервної копії..."></MenuItem>
+                        <MenuItem Header="Зберігти зміни" Click="MenuItem_Click"></MenuItem>
                         <Separator></Separator>
-                        <MenuItem Header="Вихід" ></MenuItem>
+                        <MenuItem Header="Зберегти резервну копію як..." Click="MenuItem_Click"></MenuItem>
+                        <MenuItem Header="Відновити з резервної копії..."></MenuItem>
                     </MenuItem>
                     <MenuItem Header="Налаштування">
                         <MenuItem Header="Розгортати вікно при запуску"></MenuItem>
-                        <MenuItem Header="TEST ME ! ! !" Click="MenuItem_Click"></MenuItem>
+                        <MenuItem Header="TEST ME ! ! !" ></MenuItem>
                     </MenuItem>
                     <MenuItem Header="База">
                         <MenuItem Header="Факультет..."></MenuItem>

@@ -21,5 +21,10 @@ namespace TeachingLoadCore
             this.Degree = degree;
             this.Annotation = annotation;
         }
+
+        public override string ToString()
+        {
+            return this.FirstName;
+        }
     }
 }

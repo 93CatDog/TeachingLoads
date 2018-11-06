@@ -6,6 +6,9 @@ namespace TeachingLoadCore
 {
     public partial class TeachingLoadContext : DbContext
     {
+        //public TeachingLoadContext()
+        //{
+        //}
 
         public TeachingLoadContext(DbContextOptions<TeachingLoadContext> options)
             : base(options)
