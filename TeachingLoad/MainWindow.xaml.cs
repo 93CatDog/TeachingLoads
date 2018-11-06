@@ -7,8 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using TeachingLoadCore.Contexts;
-using TeachingLoadCore.Entities;
+using TeachingLoadCore;
 using TeachingLoadCore.ExcelIntegration;
 
 namespace TeachingLoad
@@ -20,49 +19,41 @@ namespace TeachingLoad
     {
         public bool IsChanged { get; set; }
 
-        public List<Discipline> disciplines { get; set; }
-        public List<Teacher> teachers { get; set; }
-        public List<Group> groups { get; set; }
+        public List<Disciplines> disciplines { get; set; }
+        public List<Teachers> teachers { get; set; }
+        public List<Groups> groups { get; set; }
 
 
         public MainWindow()
         {
             InitializeComponent();
 
-            //ExcelReader er = new ExcelReader(ExcelPaths.DisciplinesPath);
-            //this.disciplines = er.ReadSheet();
 
-            //using (var context = new TeachingLoadContext())
-            //{
-            //    //context.Disciplines.UpdateRange(disciplines);
-                
-            //    context.Disciplines.UpdateRange(disciplines);
+            UpdateDataGrids();
+            
+        }
 
-            //    context.SaveChangesAsync();
-
-            //    //disciplines = context.Disciplines.ToList();
-            //    //this.DataGridDisciplines.ItemsSource = disciplines;
-            //}
-
-            //using (var context = new TeachingLoadContext())
-            //{
-            //    disciplines = context.Disciplines.ToList();
-            //    this.DataGridDisciplines.ItemsSource = disciplines;
-            //    groups = context.Groups.ToList();
-            //    this.DataGridGroups.ItemsSource = groups;
-            //    teachers = context.Teachers.ToList();
-            //    this.DataGridTeachers.ItemsSource = teachers;
-            //}
+        public void UpdateDataGrids()
+        {
+            using (var context = new TeachingLoadContext())
+            {
+                disciplines = context.Disciplines.ToList();
+                this.DataGridDisciplines.ItemsSource = disciplines;
+                //groups = context.Groups.ToList();
+                //this.DataGridGroups.ItemsSource = groups;
+                teachers = context.Teachers.ToList();
+                this.DataGridTeachers.ItemsSource = teachers;
+            }
         }
 
 
 
         private void DataGrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
-            if (e.EditAction != DataGridEditAction.Cancel)
-            {
-                this.IsChanged = true;
-            }
+            //if (e.EditAction != DataGridEditAction.Cancel)
+            //{
+            //    this.IsChanged = true;
+            //}
             
         }
 
@@ -79,10 +70,26 @@ namespace TeachingLoad
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(this.DataGridDisciplines.Columns.Count.ToString());
+            //MessageBox.Show(this.DataGridDisciplines.Columns.Count.ToString());
         }
 
-       
-        
+       //public void Test()
+       // {
+            //ExcelReader er = new ExcelReader(ExcelPaths.DisciplinesPath);
+            //this.disciplines = er.ReadSheet();
+
+            //using (var context = new TeachingLoadContext())
+            //{
+            //    //context.Disciplines.UpdateRange(disciplines);
+
+            //    context.Disciplines.UpdateRange(disciplines);
+
+            //    context.SaveChangesAsync();
+
+            //    //disciplines = context.Disciplines.ToList();
+            //    //this.DataGridDisciplines.ItemsSource = disciplines;
+            //}
+        //}
+
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using TeachingLoadCore.Entities;
+using TeachingLoadCore;
 using Excel = Microsoft.Office.Interop.Excel;
 
 
@@ -63,11 +63,11 @@ namespace TeachingLoadCore.ExcelIntegration
             {
                 if (excelRange.Cells[i, 1] != null && (excelRange.Cells[i, 1] as Excel.Range).Value2 != null)
                 {
-                    teachers.Add(new Teachers((string)(excelRange.Cells[i, 1] as Excel.Range).Value2,
-                     (string)(excelRange.Cells[i, 3] as Excel.Range).Value2,
-                    (string)(excelRange.Cells[i, 4] as Excel.Range).Value2,
-                    (string)(excelRange.Cells[i, 5] as Excel.Range).Value2,
-                    (string)(excelRange.Cells[i, 6] as Excel.Range).Value2));
+                    //teachers.Add(new Teacher((string)(excelRange.Cells[i, 1] as Excel.Range).Value2,
+                    // (string)(excelRange.Cells[i, 3] as Excel.Range).Value2,
+                    //(string)(excelRange.Cells[i, 4] as Excel.Range).Value2,
+                    //(string)(excelRange.Cells[i, 5] as Excel.Range).Value2,
+                    //(string)(excelRange.Cells[i, 6] as Excel.Range).Value2));
                 }
         }
         excelWorkBook.Close(true, null, null);

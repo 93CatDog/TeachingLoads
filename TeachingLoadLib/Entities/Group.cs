@@ -3,36 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TeachingLoadCore.Entities
+namespace TeachingLoadCore
 {
-    [Table("Groups")]
-    public class Group
+    public partial class Groups
     {
-        [Column("Id")]
-        [Key]
-        public int Id { get; set; }
-
-        [Column("Name")]
-        public string Name { get; set; }
-
-        [Column("Course")]
-        public Int64 Course { get; set; }
-
-        [Column("EducationForm")]
-        public String EducationForm { get; set; }
-
-        [Column("TuitionFreeStudents")]
-        public Int64 TuitionFreeStudents { get; set; }
-
-        [Column("ContractedStudents")]
-        public Int64 ContractedStudents { get; set; }
-
-        [Column("Annotation")]
-        public string Annotation { get; set; }
-
         public static int Count { get; set; }
 
-        public Group(String name, int course, String educationform, int tuitionFreeStudents, int contractedStudents, String annotation)
+        public Groups(String name, int course, String educationform, int tuitionFreeStudents, int contractedStudents, String annotation)
         {
             Count++;
             this.Id = Count;
@@ -44,7 +21,7 @@ namespace TeachingLoadCore.Entities
             this.Annotation = annotation;
         }
 
-        public Group()
+        public Groups()
         {
 
         }
